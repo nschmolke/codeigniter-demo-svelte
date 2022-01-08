@@ -1,107 +1,53 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+# Svelte Projekt zur Verwendung mit der Beispiel-API in CodeIgniter 4
 
----
+Dieses Repository enthält ein Svelte Projekt, dass mit der folgenden Beispiel-API genutzt werden kann:
+- [CodeIgniter API](https://github.com/nschmolke/codeigniter-demo-api)
 
-# svelte app
+Wenn dieses Projekt in Verbindung mit der oben genannten API genutzt werden soll, ist es empfohlen erst die API einzurichten.
+## Installation
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
+Zunächst muss dieses Repository geklont werden.
 ```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
-
-## Get started
-
-Install the dependencies...
-
-```bash
-cd svelte-app
+git clone https://github.com/nschmolke/codeigniter-demo-svelte.git .
+```
+Die benötigten dependencies werden mittels npm oder yarn installiert.
+```
 npm install
 ```
+oder
+```
+yarn install
+```
 
-...then start [Rollup](https://rollupjs.org):
+## Einbinden der API
+Damit die API verwendet werden kann, muss die URL der API in der Datei /src/axios-api.js eingetragen werden.
+Zum Beispiel:
+```
+baseURL: "https://api.codeigniter-demo.test/api/v1",  
+```
 
-```bash
+*Bitte beachten: An die baseURL aus CodeIgniter muss immer `/api/v1` angehängt werden. So wird aus der baseURL in CodeIgniter `https://api.codeigniter-demo.test` folglich für die JavaScript Projekte `https://api.codeigniter-demo.test/api/v1`.*
+
+## Starten des Projekts
+
+Der development Webserver kann mit einem der folgenden Befehle gestartet werden:
+```
 npm run dev
 ```
+oder
+```
+yarn dev
+```
+Sollte nach dem Starten ein Fehler 403 auf der Website auftreten, kann der Parameter ``--host 0.0.0.0`` an den jeweiligen yarn oder npm Befehl angehangen werden.
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
 
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
-
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
-
-## Building and running in production mode
-
-To create an optimised version of the app:
-
-```bash
+Alternativ kann das Projekt mit einem der folgenden Befehle kompiliert werden:
+```
 npm run build
 ```
-
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
-
-
-## Single-page app mode
-
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
-
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
-
-```js
-"start": "sirv public --single"
+oder
+```
+yarn build
 ```
 
-## Using TypeScript
-
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
-```
-
-If you want to use `baseUrl` or `path` aliases within your `tsconfig`, you need to set up `@rollup/plugin-alias` to tell Rollup to resolve the aliases. For more info, see [this StackOverflow question](https://stackoverflow.com/questions/63427935/setup-tsconfig-path-in-svelte).
-
-## Deploying to the web
-
-### With [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
+Weitere Informationen zu Svelte selbst können der [offiziellen Website](https://svelte.dev/) entnommen werden.
